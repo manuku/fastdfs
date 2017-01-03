@@ -1,5 +1,5 @@
-#fastdfs-tracker
-fastdfs的tracker服务，集成阿里云的yum.repo,使安装速度更加快速！
+#fastdfs服务集合
+fastdfs的服务集合，包含tracker与storage服务，集成阿里云的yum.repo,使安装速度更加快速！
 
 #使用简介
 当前docker在docker for windows 上运行正常。
