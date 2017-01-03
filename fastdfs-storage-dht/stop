@@ -1,0 +1,3 @@
+/usr/local/nginx/sbin/nginx -s stop
+fdfs_storaged /etc/fdfs/storage.conf stop
+fdhtd /etc/fdht/fdhtd.conf stop

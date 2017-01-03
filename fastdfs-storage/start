@@ -1,0 +1,4 @@
+fdfs_storaged /etc/fdfs/storage.conf start
+/usr/local/nginx/sbin/nginx 
+#-g 'daemon off;'
+tail -f /usr/local/nginx/logs/error.log -f /usr/local/nginx/logs/access.log -f /home/imlzw/fastdfs/storage/logs/storaged.log
