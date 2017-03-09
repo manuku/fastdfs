@@ -1,2 +1,2 @@
-/usr/local/nginx/sbin/nginx -s stop
+/usr/local/openresty/nginx/sbin/nginx -s stop
 fdfs_trackerd /etc/fdfs/tracker.conf stop

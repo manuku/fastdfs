@@ -1,0 +1,3 @@
+fdhtd /etc/fdht/fdhtd.conf
+#-g 'daemon off;'
+tail -f /home/imlzw/fastdfs/fastdht/logs/fdhtd.log

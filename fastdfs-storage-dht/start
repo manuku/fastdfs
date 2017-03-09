@@ -1,4 +1,3 @@
-fdhtd /etc/fdht/fdhtd.conf
 fdfs_storaged /etc/fdfs/storage.conf start
 /usr/local/nginx/sbin/nginx 
 #-g 'daemon off;'

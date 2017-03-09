@@ -1,0 +1,55 @@
+version: '2'
+services:
+
+  tracker1:
+    image: 'imlzw/fastdfs-tracker'
+    ports:
+      - "22122:22122" # 方便宿主机开发
+    restart: always
+        
+  tracker2:
+    image: 'imlzw/fastdfs-tracker'
+    ports:
+      - "22123:22122" # 方便宿主机开发
+    restart: always
+      
+  fastdht1:
+    image: 'imlzw/fastdfs-fastdht'
+    restart: always
+    
+  fastdht2:
+    image: 'imlzw/fastdfs-fastdht'
+    restart: always
+    
+  group1_storage1:
+    image: 'imlzw/fastdfs-storage-dht'
+    restart: always
+    #volumes:
+    #  - /c/docker-data/fastdfs/group1-storage1:/home/imlzw/fastdfs/storage
+    links:
+      - tracker1:tracker1
+      - tracker2:tracker2
+      - fastdht1:fastdht1
+      - fastdht2:fastdht2
+      
+  group1_storage2:
+    image: 'imlzw/fastdfs-storage-dht'
+    restart: always
+    #volumes:
+    #  - /c/docker-data/fastdfs/group1-storage2:/home/imlzw/fastdfs/storage
+    links:
+      - tracker1:tracker1
+      - tracker2:tracker2
+      - fastdht1:fastdht1
+      - fastdht2:fastdht2
+   
+  storage_proxy:
+    image: 'imlzw/fastdfs-storage-proxy'
+    restart: always
+    ports:
+      - "8800:80" 
+    links:
+      - group1_storage1:group1_storage1
+      - group1_storage2:group1_storage2
+      
+ 
