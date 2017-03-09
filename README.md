@@ -1,8 +1,8 @@
-# fastdfs·şÎñ¼¯ºÏ
-fastdfsµÄ·şÎñ¼¯ºÏ£¬°üº¬trackerÓëstorage·şÎñ£¬¼¯³É°¢ÀïÔÆµÄyum.repo,Ê¹¹úÄÚ°²×°ËÙ¶È¸ü¼Ó¿ìËÙ£¡
+# fastdfsæœåŠ¡é›†åˆ
+fastdfsçš„æœåŠ¡é›†åˆï¼ŒåŒ…å«trackerä¸storageæœåŠ¡ï¼Œé›†æˆé˜¿é‡Œäº‘çš„yum.repo,ä½¿å›½å†…å®‰è£…é€Ÿåº¦æ›´åŠ å¿«é€Ÿï¼
 
-# Ê¹ÓÃ¼ò½é
-µ±Ç°dockerÔÚdocker for windows ÉÏÔËĞĞÕı³£¡£
-¸ù¾İdocker-compose.ymlÖĞµÄ±àÅÅ£¬¿ÉÖ±½ÓÔËĞĞfastdfsÖĞµÄ·şÎñ
-- Ê×ÏÈdocker build ¹¹½¨¸÷·şÎñ¾µÏñ
-- ÔÚfastdf¸ùÄ¿Â¼Ö´ĞĞÃüÁî£ºdocker-compose up
+# ä½¿ç”¨ç®€ä»‹
+å½“å‰dockeråœ¨docker for windows ä¸Šè¿è¡Œæ­£å¸¸ã€‚
+æ ¹æ®docker-compose.ymlä¸­çš„ç¼–æ’ï¼Œå¯ç›´æ¥è¿è¡Œfastdfsä¸­çš„æœåŠ¡
+- é¦–å…ˆé€šè¿‡å‘½ä»¤docker buildåˆ†åˆ«æ„å»ºå„æœåŠ¡é•œåƒ
+- åœ¨fastdfæ ¹ç›®å½•æ‰§è¡Œå‘½ä»¤ï¼šdocker-compose up
