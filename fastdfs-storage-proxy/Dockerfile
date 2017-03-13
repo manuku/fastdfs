@@ -64,6 +64,4 @@ RUN chmod +x ${PROXY_PATH}/start \
   && ln -s ${PROXY_PATH}/start /usr/local/bin/start_proxy \ 
   && ln -s ${PROXY_PATH}/stop /usr/local/bin/stop_proxy
 
-EXPOSE 80
-
 CMD ["bash","start_proxy"] 

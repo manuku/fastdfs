@@ -23,6 +23,8 @@ ENV CENTOS_VERSION=7 \
 	FASTDFS_PATH=/home/imlzw/fastdfs \
     FASTDFS_STORAGE_PATH=/home/imlzw/fastdfs/storage \
     FASTDFS_STORAGE_DATA_PATH=/home/imlzw/fastdfs/storage/data \
+    LIB_FAST_COMMON_VERSION=1.0.35 \
+    FASTDFS_VERSION=5.09 \
     NGINX_VERSION=1.11.7 
 
 #创建必要的目录
@@ -32,23 +34,22 @@ RUN mkdir -p ${FASTDFS_PATH}/download \
  && mkdir -p ${FASTDFS_PATH}/mod 
 
 #下载
-RUN wget https://github.com/happyfish100/libfastcommon/archive/master.zip -P ${FASTDFS_PATH}/download/libfastcommon
-RUN wget https://github.com/happyfish100/fastdfs/archive/master.zip -P ${FASTDFS_PATH}/download/fastdfs
+RUN wget "https://github.com/happyfish100/libfastcommon/archive/V${LIB_FAST_COMMON_VERSION}.tar.gz" -P ${FASTDFS_PATH}/download/libfastcommon
+RUN wget "https://github.com/happyfish100/fastdfs/archive/V${FASTDFS_VERSION}.tar.gz" -P ${FASTDFS_PATH}/download/fastdfs
 RUN wget https://github.com/happyfish100/fastdfs-nginx-module/archive/master.zip -P ${FASTDFS_PATH}/download/nginx_module 
 RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -P ${FASTDFS_PATH}/download/nginx 
-RUN unzip ${FASTDFS_PATH}/download/libfastcommon/master.zip -d ${FASTDFS_PATH}/download/libfastcommon \
- && unzip ${FASTDFS_PATH}/download/fastdfs/master.zip -d ${FASTDFS_PATH}/download/fastdfs \
+RUN tar zxvf ${FASTDFS_PATH}/download/libfastcommon/V${LIB_FAST_COMMON_VERSION}.tar.gz -C ${FASTDFS_PATH}/download/libfastcommon \
+ && tar zxvf ${FASTDFS_PATH}/download/fastdfs/V${FASTDFS_VERSION}.tar.gz -C ${FASTDFS_PATH}/download/fastdfs \
  && unzip ${FASTDFS_PATH}/download/nginx_module/master.zip -d ${FASTDFS_PATH}/download/nginx_module \
  && tar zxvf ${FASTDFS_PATH}/download/nginx/nginx-${NGINX_VERSION}.tar.gz -C ${FASTDFS_PATH}/download/nginx 
 
 #安装libfastcommon
-WORKDIR ${FASTDFS_PATH}/download/libfastcommon/libfastcommon-master
+WORKDIR ${FASTDFS_PATH}/download/libfastcommon/libfastcommon-${LIB_FAST_COMMON_VERSION}
 RUN ["/bin/bash", "-c", "./make.sh && ./make.sh install"]
 
 #安装fastdfs
-WORKDIR ${FASTDFS_PATH}/download/fastdfs/fastdfs-master
+WORKDIR ${FASTDFS_PATH}/download/fastdfs/fastdfs-${FASTDFS_VERSION}
 RUN ["/bin/bash", "-c", "./make.sh && ./make.sh install && cp conf/* /etc/fdfs/"] 
- 
 
 #安装nginx
 WORKDIR ${FASTDFS_PATH}/download/nginx/nginx-${NGINX_VERSION}
@@ -67,8 +68,6 @@ RUN chmod +x /home/imlzw/start \
   && chmod +x /home/imlzw/stop \
   && ln -s /home/imlzw/start /usr/local/bin/start_fdfs \ 
   && ln -s /home/imlzw/stop /usr/local/bin/stop_fdfs
-
-EXPOSE 23000
 
 CMD ["bash","start_fdfs"] 
 

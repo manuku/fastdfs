@@ -23,7 +23,7 @@ ENV CENTOS_VERSION=7 \
     BERKELEY_DB_VERSION=6.2.23
 
 #创建必要的目录
-RUN mkdir -p ${FASTDFS_PATH}
+RUN mkdir -p ${FASTDFS_PATH}/fastdht
 
 #下载
 RUN wget https://github.com/happyfish100/libfastcommon/archive/master.zip -P ${FASTDFS_PATH}/download/libfastcommon
@@ -50,7 +50,6 @@ RUN ["/bin/bash", "-c", "./make.sh && ./make.sh install"]
 RUN cp /usr/local/db-${BERKELEY_DB_VERSION}/lib/libdb-${BERKELEY_DB_VERSION:0:3}.so /usr/lib64
 
 #添加初始化配置
-RUN mkdir -p ${FASTDFS_PATH}/fastdht
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 COPY fdht_config/* /etc/fdht/
 COPY ["start","stop","/home/imlzw/"]
@@ -59,7 +58,4 @@ RUN chmod +x /home/imlzw/start \
   && ln -s /home/imlzw/start /usr/local/bin/start_fdht \ 
   && ln -s /home/imlzw/stop /usr/local/bin/stop_fdht
 
-EXPOSE 11411
-
 CMD ["bash","start_fdht"] 
-

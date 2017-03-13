@@ -3,29 +3,35 @@ services:
 
   tracker1:
     image: 'imlzw/fastdfs-tracker'
+    volumes:
+      - /c/docker-data/fastdfs/tracker1/conf/fdfs_config:/etc/fdfs
     ports:
-      - "22122:22122" # 方便宿主机开发
-    restart: always
-        
+      - "22122:22122"
+    
   tracker2:
     image: 'imlzw/fastdfs-tracker'
+    volumes:
+      - /c/docker-data/fastdfs/tracker2/conf/fdfs_config:/etc/fdfs
     ports:
-      - "22123:22122" # 方便宿主机开发
-    restart: always
-      
+      - "22123:22122"
+  
   fastdht1:
     image: 'imlzw/fastdfs-fastdht'
-    restart: always
+    volumes:
+      - /c/docker-data/fastdfs/fastdht1/conf/fdht_config:/etc/fdht
     
   fastdht2:
     image: 'imlzw/fastdfs-fastdht'
-    restart: always
+    volumes:
+      - /c/docker-data/fastdfs/fastdht2/conf/fdht_config:/etc/fdht
     
   group1_storage1:
     image: 'imlzw/fastdfs-storage-dht'
-    restart: always
-    #volumes:
-    #  - /c/docker-data/fastdfs/group1-storage1:/home/imlzw/fastdfs/storage
+    volumes:
+      - /c/docker-data/fastdfs/group1-storage1/conf/fdht_config:/etc/fdht
+      - /c/docker-data/fastdfs/group1-storage1/conf/fdfs_config:/etc/fdfs
+      - /c/docker-data/fastdfs/group1-storage1/conf/nginx_config:/usr/local/openresy/nginx/conf
+    #  - /c/docker-data/fastdfs/group1-storage1/data:/home/imlzw/fastdfs/storage
     links:
       - tracker1:tracker1
       - tracker2:tracker2
@@ -34,22 +40,37 @@ services:
       
   group1_storage2:
     image: 'imlzw/fastdfs-storage-dht'
-    restart: always
-    #volumes:
-    #  - /c/docker-data/fastdfs/group1-storage2:/home/imlzw/fastdfs/storage
+    volumes:
+      - /c/docker-data/fastdfs/group1-storage2/conf/fdht_config:/etc/fdht
+      - /c/docker-data/fastdfs/group1-storage2/conf/fdfs_config:/etc/fdfs
+      - /c/docker-data/fastdfs/group1-storage2/conf/nginx_config:/usr/local/openresy/nginx/conf
+    #  - /c/docker-data/fastdfs/group1-storage2/data:/home/imlzw/fastdfs/storage
     links:
       - tracker1:tracker1
       - tracker2:tracker2
       - fastdht1:fastdht1
       - fastdht2:fastdht2
+      
+#  group2_storage1:
+#    image: 'imlzw/fastdfs-storage-dht'
+#    volumes:
+#      - /c/docker-data/fastdfs/group2-storage1/conf/fdht_config:/etc/fdht
+#      - /c/docker-data/fastdfs/group2-storage1/conf/fdfs_config:/etc/fdfs
+#      - /c/docker-data/fastdfs/group2-storage1/conf/nginx_config/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+    #volumes:
+    #  - /c/docker-data/fastdfs/group2-storage1/data:/home/imlzw/fastdfs/storage
+#    links:
+#      - tracker1:tracker1
+#      - tracker2:tracker2
+#      - fastdht1:fastdht1
+#      - fastdht2:fastdht2
    
   storage_proxy:
     image: 'imlzw/fastdfs-storage-proxy'
-    restart: always
+    volumes:
+      - /c/docker-data/fastdfs/storage-proxy/conf/nginx_config:/usr/local/openresty/nginx/conf
     ports:
-      - "8800:80" 
+      - "8800:80"
     links:
       - group1_storage1:group1_storage1
       - group1_storage2:group1_storage2
-      
- 

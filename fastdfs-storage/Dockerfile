@@ -68,7 +68,5 @@ RUN chmod +x /home/imlzw/start \
   && ln -s /home/imlzw/start /usr/local/bin/start_fdfs \ 
   && ln -s /home/imlzw/stop /usr/local/bin/stop_fdfs
 
-EXPOSE 23000 11411 80
-
 CMD ["bash","start_fdfs"] 
 

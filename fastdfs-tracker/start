@@ -1,4 +1,2 @@
 fdfs_trackerd /etc/fdfs/tracker.conf start
-/usr/local/openresty/nginx/sbin/nginx
-# -g 'daemon off;'
-tail -f /usr/local/openresty/nginx/logs/error.log -f /usr/local/openresty/nginx/logs/access.log -f /home/imlzw/fastdfs/tracker/logs/trackerd.log
+tail -f /home/imlzw/fastdfs/tracker/logs/trackerd.log
