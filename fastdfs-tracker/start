@@ -1,2 +1,0 @@
-fdfs_trackerd /etc/fdfs/tracker.conf start
-tail -f /home/imlzw/fastdfs/tracker/logs/trackerd.log
