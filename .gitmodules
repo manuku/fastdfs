@@ -1,3 +1,6 @@
 [submodule "fastdfs-storage-proxy"]
 	path = fastdfs-storage-proxy
 	url = https://github.com/manuku/fastdfs-storage-proxy.git
+[submodule "fastdfs-storage"]
+	path = fastdfs-storage
+	url = https://github.com/manuku/fastdfs-storage.git
