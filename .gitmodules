@@ -10,3 +10,6 @@
 [submodule "fastdfs-tracker"]
 	path = fastdfs-tracker
 	url = https://github.com/manuku/fastdfs-tracker.git
+[submodule "fastdfs-fastdht"]
+	path = fastdfs-fastdht
+	url = https://github.com/manuku/fastdfs-fastdht.git
