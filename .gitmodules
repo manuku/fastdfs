@@ -7,3 +7,6 @@
 [submodule "fastdfs-storage-dht"]
 	path = fastdfs-storage-dht
 	url = https://github.com/manuku/fastdfs-storage-dht.git
+[submodule "fastdfs-tracker"]
+	path = fastdfs-tracker
+	url = https://github.com/manuku/fastdfs-tracker.git
