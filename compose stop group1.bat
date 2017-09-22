@@ -1,0 +1,1 @@
+docker-compose stop group1_storage1 group1_storage2
