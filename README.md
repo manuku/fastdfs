@@ -9,6 +9,8 @@ fastdfs的服务集合，包含tracker与storage服务，集成阿里云的yum.r
 
 ## 代码拉取方式
 ```sh
+git clone --recursive <url>
+# 或者
 git clone <url>
 git submodule init
 git submodule update
